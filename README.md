@@ -57,7 +57,15 @@ eslint.config.mjs       # ESLint v9 Flat Config
 | Tag                 | Description |
 |---------------------|--------------|
 | **v0.1-setup**      | Manual setup: Webpack + React + TypeScript + ESLint  + Prettier |
+### 🧱 v0.2 - Domain Layer
 
+This version introduces the **domain layer and hexagonal structure**:
+
+- Entities: `Podcast`
+- Repository Port: `PodcastRepository`
+- Use Case: `GetTopPodcasts`
+- Infrastructure Adapters: API + Repository
+- Application Hook: `usePodcasts`
 ---
 
 
