@@ -1,28 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Podcast } from '../../domain/entities/Podcast';
-import { PodcastApiRepository } from '../../infraestructure/repositories/PodcastApiRepository';
+import { useEffect, useState, useMemo } from 'react';
 import { GetTopPodcasts } from '../../domain/usecases/GetTopPodcasts';
+import { Podcast } from '../../domain/entities/Podcast';
 
-export function usePodcasts() {
+const CACHE_KEY = 'top_podcasts';
+const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 horas
+
+export const usePodcasts = (getTopPodcasts: GetTopPodcasts) => {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const repo = new PodcastApiRepository();
-    const useCase = new GetTopPodcasts(repo);
-
-    (async () => {
-      try {
-        const data = await useCase.execute();
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { data, timestamp } = JSON.parse(cached);
+      if (Date.now() - timestamp < CACHE_TTL) {
         setPodcasts(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-      } finally {
-        setLoading(false);
+        return;
       }
-    })();
-  }, []);
+    }
 
-  return { podcasts, loading, error };
-}
+    getTopPodcasts.execute().then((data) => {
+      setPodcasts(data);
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+    });
+  }, [getTopPodcasts]);
+
+  const filtered = useMemo(() => {
+    const text = filter.toLowerCase();
+    return podcasts.filter(
+      (p) => p.title.toLowerCase().includes(text) || p.author.toLowerCase().includes(text)
+    );
+  }, [filter, podcasts]);
+
+  return { podcasts: filtered, filter, setFilter };
+};
