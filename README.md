@@ -79,7 +79,7 @@ this version introduces: Home page implemented with routing, cache, and podcastC
 
 Implement the Podcast Detail view (/podcast/:podcastId) with individual cache by ID, a reusable sidebar component, and a generic fetch hook with TTL caching.
 
-#### Main Features
+#### Main Changes
 
 * Data and Cache
 
@@ -147,7 +147,28 @@ It also introduces a global loading system that provides visual feedback in the 
 - Updated **Header** to reactively show the loading spinner.
 - Adjusted **Home** and **PodcastDetail** to integrate with the new navigation flow.
 
+## v0.6.0 - Styling
 
+### Overview
+This version completes the visual layer of the application.  
+Native CSS has been added for layout and readability.
+
+### Main Changes
+- **Added native CSS styling** (`styles.css`)
+    - Clean and minimal design using pure CSS.
+    - Responsive podcast grid and card design.
+    - Styled sidebar, header, and episode table.
+    - Improved spacing, typography, and alignment.
+- **HTML description rendering**
+    - Episode descriptions that include HTML are now rendered safely using `dangerouslySetInnerHTML`.
+    - Ensures that text, links, and formatting from the iTunes API are displayed as intended.
+- **General layout improvements**
+    - Finalized the header layout with loading spinner.
+    - Adjusted routing and view spacing for consistency across pages.
+- **All views completed**
+    - Home (top 100 podcasts with filtering)
+    - Podcast detail (episodes list)
+    - Episode detail (audio player and HTML description)
 ## 📄 License
 
 MIT © [Josseph Alvarez]
