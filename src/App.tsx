@@ -1,23 +1,17 @@
 import React from 'react';
-import { Podcast } from './domain/entities/Podcast';
-import { usePodcasts } from './application/hooks/usePodcasts';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './presentation/router/Router';
 
 export function App() {
-  const { podcasts, loading, error } = usePodcasts();
-
-  if (loading) return <p>Loading podcasts...</p>;
-  if (error) return <p>Error: {error}</p>;
-
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>🎧 Top 100 Podcasts</h1>
-      <ul>
-        {podcasts.map((p: Podcast) => (
-          <li key={p.id}>
-            {p.title} — {p.author}
-          </li>
-        ))}
-      </ul>
-    </main>
+    <BrowserRouter>
+      <header style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
+        <h1>🎧 Podcast App</h1>
+      </header>
+
+      <main style={{ padding: '2rem' }}>
+        <AppRouter />
+      </main>
+    </BrowserRouter>
   );
 }
