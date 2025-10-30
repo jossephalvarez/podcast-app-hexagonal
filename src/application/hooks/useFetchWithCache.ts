@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
-
-interface CacheEntry<T> {
-  data: T;
-  timestamp: number;
-}
+import { useLoading } from './useLoading';
 
 export function useFetchWithCache<T>(
   key: string,
   fetcher: () => Promise<T>,
-  ttl = 24 * 60 * 60 * 1000 // 24h
+  ttl = 24 * 60 * 60 * 1000
 ) {
   const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { setLoading } = useLoading();
 
   useEffect(() => {
     const cached = localStorage.getItem(key);
+    setLoading(true);
+
     if (cached) {
-      const { data, timestamp }: CacheEntry<T> = JSON.parse(cached);
+      const { data, timestamp } = JSON.parse(cached);
       if (Date.now() - timestamp < ttl) {
         setData(data);
         setLoading(false);
@@ -34,5 +32,5 @@ export function useFetchWithCache<T>(
       .finally(() => setLoading(false));
   }, [key]);
 
-  return { data, loading, error };
+  return { data, error };
 }

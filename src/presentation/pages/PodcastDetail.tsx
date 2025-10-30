@@ -1,11 +1,13 @@
 import React from 'react';
 import { usePodcastDetail } from '../../application/hooks/usePodcastDetail';
 import { Sidebar } from '../components/Sidebar';
+import { Link, useParams } from 'react-router-dom';
 
 export const PodcastDetail = () => {
-  const { data, loading, error } = usePodcastDetail();
+  const { podcastId } = useParams<{ podcastId: string }>();
 
-  if (loading) return <p>Loading podcast details...</p>;
+  const { data, error } = usePodcastDetail();
+
   if (error) return <p>Error: {error}</p>;
   if (!data) return null;
 
@@ -27,7 +29,9 @@ export const PodcastDetail = () => {
           <tbody>
             {episodes.map((ep) => (
               <tr key={ep.id}>
-                <td>{ep.title}</td>
+                <td>
+                  <Link to={`/podcast/${podcastId}/episode/${ep.id}`}>{ep.title}</Link>
+                </td>
                 <td>{ep.date}</td>
                 <td>{ep.duration}</td>
               </tr>

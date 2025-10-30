@@ -6,11 +6,14 @@ import { PodcastApiRepository } from '../../infraestructure/repositories/Podcast
 const repo = new PodcastApiRepository();
 const getPodcastDetail = new GetPodcastDetail(repo);
 
-export const usePodcastDetail = () => {
-  const { podcastId } = useParams<{ podcastId: string }>();
+export const useEpisodeDetail = () => {
+  const { podcastId, episodeId } = useParams<{ podcastId: string; episodeId: string }>();
   const { data, error } = useFetchWithCache(`podcast_${podcastId}`, () =>
     getPodcastDetail.execute(podcastId!)
   );
 
-  return { data, error };
+  const episode = data?.episodes.find((ep) => ep.id === episodeId);
+  const podcast = data?.podcast;
+
+  return { podcast, episode, error };
 };

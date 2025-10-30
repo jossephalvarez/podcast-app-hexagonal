@@ -125,6 +125,29 @@ Implement the Podcast Detail view (/podcast/:podcastId) with individual cache by
 
 ---
 
+## v0.5.0 - Episode Detail and Global Loading
+
+### Overview
+This version completes all required views described in the technical test:
+- Home
+- Podcast Detail
+- Episode Detail
+
+It also introduces a global loading system that provides visual feedback in the header while any data request is in progress.
+
+### Main Changes
+- Added **EpisodeDetail** page (`/podcast/:podcastId/episode/:episodeId`)
+    - Displays the selected episode using HTML5 `<audio>` playback.
+    - Reuses the existing `Sidebar` component.
+    - Renders episode descriptions with safe HTML.
+- Added **global loading context** (`LoadingContext`)
+    - Used by all hooks to display a global spinner in the header.
+    - Prevents duplicated local loading logic across pages.
+- Updated **Router** to include the episode detail route.
+- Updated **Header** to reactively show the loading spinner.
+- Adjusted **Home** and **PodcastDetail** to integrate with the new navigation flow.
+
+
 ## 📄 License
 
 MIT © [Josseph Alvarez]

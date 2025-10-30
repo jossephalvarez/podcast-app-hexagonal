@@ -3,9 +3,8 @@ import { usePodcasts } from '../../application/hooks/usePodcasts';
 import { PodcastCard } from '../components/PodcastCard';
 
 export const Home = () => {
-  const { podcasts, filter, setFilter, loading, error } = usePodcasts();
+  const { podcasts, filter, setFilter, error } = usePodcasts();
 
-  if (loading) return <p>Loading podcasts...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
