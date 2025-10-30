@@ -3,6 +3,7 @@ export class Podcast {
     public readonly id: string,
     public readonly title: string,
     public readonly author: string,
+    public readonly description: string,
     public readonly image: string
   ) {}
 }

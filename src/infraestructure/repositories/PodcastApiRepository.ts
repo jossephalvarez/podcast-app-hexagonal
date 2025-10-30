@@ -1,17 +1,7 @@
 import { PodcastRepository } from '../../domain/repositories/PodcastRepository';
 import { Podcast } from '../../domain/entities/Podcast';
 import { fetchJSON, urls } from '../api/itunesApi';
-
-interface FeedResponse {
-  feed: {
-    entry: {
-      id: { attributes: { 'im:id': string } };
-      'im:name': { label: string };
-      'im:artist': { label: string };
-      'im:image': { label: string }[];
-    }[];
-  };
-}
+import { FeedResponse } from '../../domain/types/FeedResponse';
 
 export class PodcastApiRepository implements PodcastRepository {
   async getTopPodcasts(): Promise<Podcast[]> {
@@ -22,6 +12,7 @@ export class PodcastApiRepository implements PodcastRepository {
           e.id.attributes['im:id'],
           e['im:name'].label,
           e['im:artist'].label,
+          e.summary?.label ?? '',
           e['im:image'].at(-1)?.label ?? ''
         )
     );
