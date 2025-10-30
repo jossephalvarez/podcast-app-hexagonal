@@ -67,7 +67,11 @@ This version introduces the **domain layer and hexagonal structure**:
 - Infrastructure Adapters: API + Repository
 - Application Hook: `usePodcasts`
 ---
+### 🧱 v0.3.0-home-page
+this version introduces: Home page implemented with routing, cache, and podcastCard 
 
+
+---
 
 ## 📄 License
 
