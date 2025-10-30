@@ -1,36 +1,29 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useFetchWithCache } from './useFetchWithCache';
 import { GetTopPodcasts } from '../../domain/usecases/GetTopPodcasts';
 import { Podcast } from '../../domain/entities/Podcast';
+import { useMemo, useState } from 'react';
+import { PodcastApiRepository } from '../../infraestructure/repositories/PodcastApiRepository';
 
-const CACHE_KEY = 'top_podcasts';
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 horas
+const repo = new PodcastApiRepository();
+const getTopPodcasts = new GetTopPodcasts(repo);
 
-export const usePodcasts = (getTopPodcasts: GetTopPodcasts) => {
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
+export const usePodcasts = () => {
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (cached) {
-      const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < CACHE_TTL) {
-        setPodcasts(data);
-        return;
-      }
-    }
+  const { data, loading, error } = useFetchWithCache<Podcast[]>(
+    'top_podcasts',
+    () => getTopPodcasts.execute(),
+    24 * 60 * 60 * 1000 // TTL 24h
+  );
 
-    getTopPodcasts.execute().then((data) => {
-      setPodcasts(data);
-      localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
-    });
-  }, [getTopPodcasts]);
+  const podcasts = data ?? [];
 
   const filtered = useMemo(() => {
-    const text = filter.toLowerCase();
+    const query = filter.toLowerCase();
     return podcasts.filter(
-      (p) => p.title.toLowerCase().includes(text) || p.author.toLowerCase().includes(text)
+      (p) => p.title.toLowerCase().includes(query) || p.author.toLowerCase().includes(query)
     );
   }, [filter, podcasts]);
 
-  return { podcasts: filtered, filter, setFilter };
+  return { podcasts: filtered, filter, setFilter, loading, error };
 };

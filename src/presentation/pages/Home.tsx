@@ -1,14 +1,12 @@
 import React from 'react';
 import { usePodcasts } from '../../application/hooks/usePodcasts';
-import { GetTopPodcasts } from '../../domain/usecases/GetTopPodcasts';
 import { PodcastCard } from '../components/PodcastCard';
-import { PodcastApiRepository } from '../../infraestructure/repositories/PodcastApiRepository';
 
-const repo = new PodcastApiRepository();
-const getTopPodcasts = new GetTopPodcasts(repo);
+export const Home = () => {
+  const { podcasts, filter, setFilter, loading, error } = usePodcasts();
 
-export const Home: React.FC = () => {
-  const { podcasts, filter, setFilter } = usePodcasts(getTopPodcasts);
+  if (loading) return <p>Loading podcasts...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <main className="home">

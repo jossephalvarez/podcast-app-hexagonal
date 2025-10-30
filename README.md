@@ -66,9 +66,61 @@ This version introduces the **domain layer and hexagonal structure**:
 - Use Case: `GetTopPodcasts`
 - Infrastructure Adapters: API + Repository
 - Application Hook: `usePodcasts`
----
+
 ### 🧱 v0.3.0-home-page
-this version introduces: Home page implemented with routing, cache, and podcastCard 
+
+this version introduces: Home page implemented with routing, cache, and podcastCard
+
+---
+
+---
+
+### 🧱 v0.4.0 - Podcast Detail
+
+Implement the Podcast Detail view (/podcast/:podcastId) with individual cache by ID, a reusable sidebar component, and a generic fetch hook with TTL caching.
+
+#### Main Features
+
+* Data and Cache
+
+* Added useFetchWithCache hook to centralize caching logic (24h TTL).
+
+* Updated usePodcasts to use the generic hook.
+
+* Added usePodcastDetail for podcast details and episodes.
+
+#### New use cases:
+
+* GetPodcastDetail
+
+* GetTopPodcasts
+
+#### Domain
+
+* Added Episode entity.
+
+  * Added new DTOs:
+
+      * PodcastDetailResponse.ts
+
+      * AllOriginsResponse.ts
+
+* Extended PodcastRepository with getPodcastDetail.
+
+#### Infrastructure
+
+* Updated PodcastApiRepository to fetch podcast details and episodes using safe parsing and typed data.
+
+#### Presentation
+
+* New page PodcastDetail.tsx showing sidebar and episode list.
+
+* New component Sidebar.tsx with podcast info.
+
+* Updated Router.tsx with /podcast/:podcastId route.
+
+* Updated Home.tsx
+
 
 
 ---
