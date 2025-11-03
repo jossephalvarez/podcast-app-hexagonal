@@ -26,7 +26,6 @@ export default [
       react,
       '@typescript-eslint': ts,
     },
-    // 👇 Añade esta parte:
     settings: {
       react: {
         version: 'detect',
@@ -39,6 +38,14 @@ export default [
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-vars': ['warn'],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
     },
   },
 ];

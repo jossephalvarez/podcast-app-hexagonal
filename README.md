@@ -169,6 +169,31 @@ Native CSS has been added for layout and readability.
     - Home (top 100 podcasts with filtering)
     - Podcast detail (episodes list)
     - Episode detail (audio player and HTML description)
+    - 
+## v0.7.0 - Testing Setup and Tests
+
+### Overview
+This version introduces full test configuration and basic test coverage for the application.  
+Additionally, the project has been linted and formatted to ensure code consistency.
+
+---
+
+### Configuration
+- Added **Jest + TypeScript** integration (`jest.config.js`, `jest.setup.ts`, `jest.polyfills.ts`).
+---
+
+### Implemented Tests
+1. **Unit Test** – `useFetchWithCache.test.tsx`  
+   Validates caching logic, TTL handling, and error management.
+
+2. **Integration Test** – `Home.test.tsx`  
+   Tests rendering of podcast list, filtering behavior, and hook interaction.
+
+3. **E2E Test (Simulated)** – `App.e2e.test.tsx`  
+   Uses `MemoryRouter` and a mocked `fetch` to simulate the full user flow.
+---
+
+
 ## 📄 License
 
 MIT © [Josseph Alvarez]

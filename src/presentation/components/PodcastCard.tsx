@@ -11,4 +11,3 @@ export const PodcastCard: React.FC<{ podcast: Podcast }> = ({ podcast }) => (
     </div>
   </Link>
 );
-
