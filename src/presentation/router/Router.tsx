@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { NotFound } from '../pages/NotFound';
 
 const Home = lazy(() => import('../pages/Home'));
 const PodcastDetail = lazy(() => import('../pages/PodcastDetail'));
@@ -11,6 +12,7 @@ export const AppRouter = () => (
       <Route path="/" element={<Home />} />
       <Route path="/podcast/:podcastId" element={<PodcastDetail />} />
       <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetail />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
 );
