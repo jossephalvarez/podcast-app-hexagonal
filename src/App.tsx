@@ -1,15 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './presentation/router/Router';
-import { LoadingProvider } from './application/context/LoadingContext';
 import { Header } from './presentation/components/Header';
+import { LoadingProvider } from './application/context/LoadingContext';
+import { ErrorBoundary } from './presentation/components/ErrorBoundary';
 
 export function App() {
   return (
     <BrowserRouter>
       <LoadingProvider>
-        <Header />
-        <AppRouter />
+        <ErrorBoundary>
+          <Header />
+          <AppRouter />
+        </ErrorBoundary>
       </LoadingProvider>
     </BrowserRouter>
   );

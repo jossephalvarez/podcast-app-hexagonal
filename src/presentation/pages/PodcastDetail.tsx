@@ -2,13 +2,14 @@ import React from 'react';
 import { usePodcastDetail } from '../../application/hooks/usePodcastDetail';
 import { Sidebar } from '../components/Sidebar';
 import { Link, useParams } from 'react-router-dom';
+import { ErrorBox } from '../components/ErrorBox';
 
-export const PodcastDetail = () => {
+const PodcastDetail = () => {
   const { podcastId } = useParams<{ podcastId: string }>();
 
   const { data, error } = usePodcastDetail();
 
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <ErrorBox message={error} />;
   if (!data) return null;
 
   const { podcast, episodes } = data;
@@ -42,3 +43,4 @@ export const PodcastDetail = () => {
     </div>
   );
 };
+export default PodcastDetail;
