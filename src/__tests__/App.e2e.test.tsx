@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { AppRouter } from '../presentation/router/Router';
 import { LoadingProvider } from '../application/context/LoadingContext';
 import { Header } from '../presentation/components/Header';
+import { ErrorBoundary } from '../presentation/components/ErrorBoundary';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -30,8 +31,10 @@ describe('E2E Flow', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <LoadingProvider>
-          <Header />
-          <AppRouter />
+          <ErrorBoundary>
+            <Header />
+            <AppRouter />
+          </ErrorBoundary>
         </LoadingProvider>
       </MemoryRouter>
     );
