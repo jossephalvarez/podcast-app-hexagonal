@@ -16,47 +16,63 @@ This project is a **React + TypeScript + Webpack** base prepared for building a 
 ---
 ##  Architecture Overview
 
-```code
+The application follows **Hexagonal Architecture** to ensure high modularity, testability, and independence.
 
+**Core Layers:**
+
+- **Application** → Use cases and hooks
+- **Domain** → Business logic and entities
+- **Infrastructure** → External services and APIs
+- **Presentation** → React UI components, pages, and router
+
+```text
+application/
+├─ context/
+├─ hooks/
+domain/
+├─ entities/
+├─ repositories/
+├─ types/
+├─ usecases/
+infrastructure/
+├─ api/
+├─ repositories/
+presentation/
+├─ components/
+├─ pages/
+├─ router/
+├─ types/
 ```
 ---
-##  Project Structure (current)
-
-```code
-src/
-├─ index.tsx          # React entrypoint
-├─ App.tsx            # Main component
-├─ styles.css         # Base styles
-webpack.config.js      # Webpack manual setup
-tsconfig.json          # TypeScript configuration
-eslint.config.mjs       # ESLint v9 Flat Config
-.prettierrc            # Prettier formatting rules
-```
-
-
-
 ## Scripts
 
-| Command            | Description                          |
-| ------------------ | ------------------------------------ |
-| `npm run dev`      | Runs Webpack Dev Server at port 3000 |
-| `npm run build`    | Creates a production build           |
-| `npm run lint`     | Runs ESLint (React + TS rules)       |
-| `npm run lint:fix` | Fixes lint issues automatically      |
-| `npm run format`   | Formats code using Prettier          |
-| `npm run test`     | Runs Jest tests                      |
+| Command                 | Description                          |
+| ----------------------- | ------------------------------------ |
+| `npm run dev`           | Runs Webpack Dev Server at port 3000 |
+| `npm run build`         | Creates a production build           |
+| `npm run lint`          | Runs ESLint (React + TS rules)        |
+| `npm run lint:fix`      | Fixes lint issues automatically                 |
+| `npm run format`        | Formats code using Prettier           |
+| `npm test`              | Runs Jest tests                  |
+| `npm run test:watch`    | Run tests in watch mode              |
+| `npm run test:coverage` | Generate Jest coverage report        |
+| `npm run precommit`     | Run lint and tests before committing |
+
 
 ---
-## Testing Strategy
 
+[//]: # (## Testing Strategy)
 
----
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
 ## Versions
 
-| Tag                 | Description |
-|---------------------|--------------|
-| **v0.1-setup**      | Manual setup: Webpack + React + TypeScript + ESLint  + Prettier |
+### 🧱 v0.1 - Setup
+
+Manual setup: Webpack + React + TypeScript + ESLint  + Prettier
+
 ### 🧱 v0.2 - Domain Layer
 
 This version introduces the **domain layer and hexagonal structure**:
@@ -70,8 +86,6 @@ This version introduces the **domain layer and hexagonal structure**:
 ### 🧱 v0.3.0-home-page
 
 this version introduces: Home page implemented with routing, cache, and podcastCard
-
----
 
 ---
 
@@ -125,7 +139,7 @@ Implement the Podcast Detail view (/podcast/:podcastId) with individual cache by
 
 ---
 
-## v0.5.0 - Episode Detail and Global Loading
+## 🧱 v0.5.0 - Episode Detail and Global Loading
 
 ### Overview
 This version completes all required views described in the technical test:
@@ -147,7 +161,7 @@ It also introduces a global loading system that provides visual feedback in the 
 - Updated **Header** to reactively show the loading spinner.
 - Adjusted **Home** and **PodcastDetail** to integrate with the new navigation flow.
 
-## v0.6.0 - Styling
+## 🧱 v0.6.0 - Styling
 
 ### Overview
 This version completes the visual layer of the application.  
@@ -170,7 +184,7 @@ Native CSS has been added for layout and readability.
     - Podcast detail (episodes list)
     - Episode detail (audio player and HTML description)
     - 
-## v0.7.0 - Testing Setup and Tests
+## 🧱 v0.7.0 - Testing Setup and Tests
 
 ### Overview
 This version introduces full test configuration and basic test coverage for the application.  
@@ -193,6 +207,39 @@ Additionally, the project has been linted and formatted to ensure code consisten
    Uses `MemoryRouter` and a mocked `fetch` to simulate the full user flow.
 ---
 
+## v0.8.0 - Stability & Testing Release
+
+### Overview
+This version focuses on improving **stability, maintainability, and developer experience**.  
+Error handling, routing, lazy loading, and test coverage have been enhanced to make the application more resilient and performant.
+
+---
+
+### Main Changes
+- **Global Error Handling**
+    - Added `ErrorBoundary` component for runtime error isolation.
+    - Implemented `ErrorBox` for displaying friendly error messages in the UI.
+
+- **Routing Improvements**
+    - Introduced a dedicated **404 NotFound** page for unmatched routes.
+    - Integrated **lazy loading** and `React.Suspense` for routes to improve performance and reduce initial bundle size.
+
+- **Testing Enhancements**
+    - Added comprehensive **unit, integration, and E2E** test coverage for core features.
+    - Added coverage and watch scripts for better local testing workflow.
+
+- **UI / CSS Adjustments**
+    - Unified and cleaned repeated CSS properties for consistent layout.
+    - Refined styling in `EpisodeDetail` and `PodcastDetail` pages for visual alignment.
+
+- **Developer Experience**
+    - Added precommit checks to ensure linting and tests run before commits.
+    - Introduced test scripts:
+      ```json
+      "test:watch": "jest --watch",
+      "test:coverage": "jest --coverage",
+      "precommit": "npm run lint && npm test"
+      ```
 
 ## 📄 License
 
