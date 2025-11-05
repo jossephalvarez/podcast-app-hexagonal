@@ -73,6 +73,8 @@ presentation/
 
 Manual setup: Webpack + React + TypeScript + ESLint  + Prettier
 
+
+---
 ### 🧱 v0.2 - Domain Layer
 
 This version introduces the **domain layer and hexagonal structure**:
@@ -83,6 +85,7 @@ This version introduces the **domain layer and hexagonal structure**:
 - Infrastructure Adapters: API + Repository
 - Application Hook: `usePodcasts`
 
+---
 ### 🧱 v0.3.0-home-page
 
 this version introduces: Home page implemented with routing, cache, and podcastCard
@@ -136,7 +139,6 @@ Implement the Podcast Detail view (/podcast/:podcastId) with individual cache by
 * Updated Home.tsx
 
 
-
 ---
 
 ## 🧱 v0.5.0 - Episode Detail and Global Loading
@@ -161,6 +163,7 @@ It also introduces a global loading system that provides visual feedback in the 
 - Updated **Header** to reactively show the loading spinner.
 - Adjusted **Home** and **PodcastDetail** to integrate with the new navigation flow.
 
+---
 ## 🧱 v0.6.0 - Styling
 
 ### Overview
@@ -183,7 +186,9 @@ Native CSS has been added for layout and readability.
     - Home (top 100 podcasts with filtering)
     - Podcast detail (episodes list)
     - Episode detail (audio player and HTML description)
-    - 
+
+
+---
 ## 🧱 v0.7.0 - Testing Setup and Tests
 
 ### Overview
@@ -207,7 +212,7 @@ Additionally, the project has been linted and formatted to ensure code consisten
    Uses `MemoryRouter` and a mocked `fetch` to simulate the full user flow.
 ---
 
-## v0.8.0 - Stability & Testing Release
+## 🧱 v0.8.0 - Stability & Testing Release
 
 ### Overview
 This version focuses on improving **stability, maintainability, and developer experience**.  
@@ -240,6 +245,36 @@ Error handling, routing, lazy loading, and test coverage have been enhanced to m
       "test:coverage": "jest --coverage",
       "precommit": "npm run lint && npm test"
       ```
+
+---
+## 🧱 v1.0.0 - Performance & Offline Resilience
+
+### Overview
+This major release focuses on **performance optimization** and **resilience under unstable network conditions**, completing the evolution of the project into a robust, production-ready SPA.  
+The caching layer has been enhanced to leverage **IndexedDB** for asynchronous, persistent storage and offline recovery.
+
+---
+
+### Key Improvements
+- **IndexedDB Caching**
+    - Replaced the previous `localStorage` implementation with **IndexedDB** for non-blocking, persistent data caching.
+    - Data now survives browser restarts and can be stored in larger volumes.
+- **Network Fallback**
+    - When the API is unavailable or returns HTTP errors, the app gracefully loads **previously cached data** instead of failing.
+    - Ensures continuity even in **slow 4G** or temporary offline scenarios.
+- **Offline-Ready Experience**
+    - Previously fetched podcasts and episodes remain accessible without an active network connection.
+    - Greatly improves perceived responsiveness and user experience.
+- **Background Refresh**
+    - Keeps the existing TTL (24h) strategy.
+    - Fetches new data silently while displaying cached content.
+
+---
+
+### Technical Details
+The new caching layer is implemented using the **`idb-keyval`** library for simplicity and reliability:
+
+---
 
 ## 📄 License
 
