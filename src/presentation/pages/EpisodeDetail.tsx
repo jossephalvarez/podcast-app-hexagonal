@@ -10,13 +10,16 @@ const EpisodeDetail = () => {
   if (!podcast || !episode) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="podcast-detail">
       <Sidebar podcast={podcast} />
-      <main>
+      <section className="episodes episode-detail">
         <h2>{episode.title}</h2>
-        <p>{episode.date}</p>
+        <p className="episode-date">{episode.date}</p>
 
-        <div dangerouslySetInnerHTML={{ __html: episode.description }} />
+        <div
+          className="episode-description"
+          dangerouslySetInnerHTML={{ __html: episode.description }}
+        />
 
         {episode.audioUrl && (
           <audio controls>
@@ -24,8 +27,9 @@ const EpisodeDetail = () => {
             Your browser does not support the audio element.
           </audio>
         )}
-      </main>
+      </section>
     </div>
   );
 };
+
 export default EpisodeDetail;
