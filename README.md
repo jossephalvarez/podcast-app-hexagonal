@@ -275,6 +275,59 @@ The caching layer has been enhanced to leverage **IndexedDB** for asynchronous, 
 The new caching layer is implemented using the **`idb-keyval`** library for simplicity and reliability:
 
 ---
+## 🧱 v1.1.0 – CI/CD Integration, BEM Styling, Husky, Playwright & Vercel Deployment
+
+### Overview
+This version elevates the project to a production-ready level by introducing scalable styling practices, continuous integration and deployment pipelines, and end-to-end testing automation.  
+
+---
+
+### BEM Methodology & Modular CSS
+- Introduced **BEM (Block Element Modifier)** convention to improve readability and maintainability of CSS.
+- Started modular CSS structure, colocating style files with their respective components.
+- First component refactored: `Sidebar` now uses semantic BEM class naming (`sidebar__title`, `sidebar__image`, etc.).
+- Prepared the foundation to extend BEM across all presentation components.
+
+---
+
+### Husky Pre-Commit Quality Gate
+- Integrated **Husky** to enforce code quality locally before commits.
+- Added a `pre-commit` hook that runs lint and tests automatically.
+---
+### E2E Testing with Playwright
+Configured Playwright for realistic end-to-end testing.
+
+Added navigation tests covering full user flow:
+
+Home → Podcast Detail → Episode Detail
+
+Validation of IndexedDB caching after reload.
+
+---
+### Continuous Integration with GitHub Actions
+
+Added a CI workflow (.github/workflows/ci.yml) triggered on every push or pull request.
+
+Validates every commit through:
+
+* Linting (npm run lint)
+
+* Unit & Integration tests (npm test)
+
+* E2E tests (npm run test:e2e)
+
+Guarantees code integrity before deployment.
+
+---
+### Deployment on Vercel
+
+Integrated Vercel for automatic deployment of production builds.
+
+Every successful push to main triggers a deployment.
+
+Latest version is available at:
+  https://podcast-app-hexagonal.vercel.app/
+---
 
 ## 📄 License
 
