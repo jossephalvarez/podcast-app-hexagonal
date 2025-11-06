@@ -1,20 +1,21 @@
 /* Sidebar */
 .sidebar {
-    padding: 1rem;
-    width: 280px;
-    flex-shrink: 0;
+  padding: 1rem;
+  width: 280px;
+  flex-shrink: 0;
 }
 .sidebar_img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 1rem;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 .sidebar__title {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
-.sidebar__author, .sidebar__description {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.4rem;
+.sidebar__author,
+.sidebar__description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.4rem;
 }

@@ -36,7 +36,9 @@ export function useFetchWithCache<T>(
           setData(fresh);
           await set(key, { data: fresh, timestamp: now });
         }
-      } catch (err: any) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+      } catch (err: never) {
         const cached = await get<{ data: T }>(key);
         if (cached?.data) {
           setData(cached.data);

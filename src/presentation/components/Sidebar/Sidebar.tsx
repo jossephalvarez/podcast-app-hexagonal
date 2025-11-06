@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarProps } from '../../types/sidebar.types';
+import './Sidebar.css';
 
 export const Sidebar: React.FC<SidebarProps> = ({ podcast }) => {
   return (
