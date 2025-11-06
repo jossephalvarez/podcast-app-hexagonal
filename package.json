@@ -11,6 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:e2e": "npx playwright test",
     "precommit": "npm run lint && npm test"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
