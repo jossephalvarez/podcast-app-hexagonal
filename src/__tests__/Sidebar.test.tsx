@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Sidebar } from '../presentation/components/Sidebar';
+import { Sidebar } from '../presentation/components/Sidebar/Sidebar';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Sidebar Component', () => {

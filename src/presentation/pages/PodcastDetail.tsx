@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePodcastDetail } from '../../application/hooks/usePodcastDetail';
-import { Sidebar } from '../components/Sidebar';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 import { Link, useParams } from 'react-router-dom';
 import { ErrorBox } from '../components/ErrorBox';
 

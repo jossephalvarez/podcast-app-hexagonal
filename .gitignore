@@ -64,3 +64,28 @@ coverage/
 # 🔧 Webpack temporary
 # ============================================================
 webpack-stats.json
+/playwright-report/data/8c985249779e0ab43822dc71b54bf5b13c60d809.webm
+/playwright-report/data/52daf02f30951663d0aad83d91842ba3b2e7acbc.md
+/playwright-report/data/a2df04d9794a657430d3016825203c5ae0b83e19.png
+/playwright-report/data/c58f4a5ca0b9332b17bf553fb2ea091b8ed98eb7.zip
+/playwright-report/trace/assets/codeMirrorModule-eyVcHN77.js
+/playwright-report/trace/assets/defaultSettingsView-w0zYjHsW.js
+/playwright-report/trace/codeMirrorModule.C3UTv-Ge.css
+/playwright-report/trace/codicon.DCmgc-ay.ttf
+/playwright-report/trace/defaultSettingsView.TQ8_7ybu.css
+/playwright-report/trace/index.Bx16ehp1.js
+/playwright-report/trace/index.html
+/playwright-report/trace/index.I8N9v4jT.css
+/playwright-report/trace/playwright-logo.svg
+/playwright-report/trace/snapshot.html
+/playwright-report/trace/sw.bundle.js
+/playwright-report/trace/uiMode.Btcz36p_.css
+/playwright-report/trace/uiMode.DRQ310U5.js
+/playwright-report/trace/uiMode.html
+/playwright-report/trace/xtermModule.DYP7pi_n.css
+/playwright-report/index.html
+/test-results/podcast-App-navigation-flow-User-can-open-an-Episode-Detail/error-context.md
+/test-results/podcast-App-navigation-flow-User-can-open-an-Episode-Detail/test-failed-1.png
+/test-results/podcast-App-navigation-flow-User-can-open-an-Episode-Detail/trace.zip
+/test-results/podcast-App-navigation-flow-User-can-open-an-Episode-Detail/video.webm
+/test-results/.last-run.json

@@ -160,28 +160,6 @@ header div[style*='borderTop'] {
   gap: 2rem;
   align-items: flex-start;
 }
-
-/* Sidebar */
-.sidebar {
-  padding: 1rem;
-  width: 280px;
-  flex-shrink: 0;
-}
-.sidebar img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.sidebar h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-.sidebar p {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.4rem;
-}
-
 /* Episodes */
 .episodes {
   flex: 1;

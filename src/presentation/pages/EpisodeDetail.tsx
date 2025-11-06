@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEpisodeDetail } from '../../application/hooks/useEpisodeDetail';
-import { Sidebar } from '../components/Sidebar';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 import { ErrorBox } from '../components/ErrorBox';
 
 const EpisodeDetail = () => {
